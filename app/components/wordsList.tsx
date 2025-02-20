@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { Draggable } from "./draggable";
-
-const initialWordsList = [
-  { id: "1", content: "blue", position: { x: 0, y: 0 } },
-  { id: "2", content: "happy", position: { x: 50, y: 0 } },
-  { id: "3", content: "sad", position: { x: 100, y: 0 } },
-  { id: "4", content: "sky", position: { x: 150, y: 0 } }
-];
+import initialWordsList from "./words";
 
 export default function WordsList() {
   const [words, setWords] = useState(initialWordsList);
@@ -22,8 +16,8 @@ export default function WordsList() {
               ...word,
               position: {
                 x: word.position.x + delta.x,
-                y: word.position.y + delta.y
-              }
+                y: word.position.y + delta.y,
+              },
             }
           : word
       )
@@ -41,7 +35,7 @@ export default function WordsList() {
             styles={{
               position: "absolute",
               left: `${word.position.x}px`,
-              top: `${word.position.y}px`
+              top: `${word.position.y}px`,
             }}
           />
         ))}
